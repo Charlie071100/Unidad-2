@@ -1,6 +1,6 @@
 import numpy as np
 
-x= np.array([0,0],[0,1], [1,0],[1,1])
+x= np.array([[0,0],[0,1], [1,0],[1,1]])
 y = np.array([0,0,0,1])
 
 w= np.random.rand(2)
@@ -23,3 +23,24 @@ for epoch in range (50):
 
         w += lr * error * x[i]
         b += lr * error
+
+        print("Pesos Finales",w,"Bias: ",b)
+
+    for i in range (len (x)):
+        z = np.dot (x[i],w) + b
+        if z> 0.5:
+            y_pred = 1
+        else:
+            y_pred = 0
+        print (f"Entrada: {x[i]} ||| Salida: {y_pred}")
+
+    def predecir (x):
+        z =  np.dot (x,w) + b
+        if z > 0.5:
+            y_pred = 1
+        else: 
+            y_pred = 0
+        return y_pred
+
+    nuevo = np.array ([1,1])
+    print (f"Ingresaste {nuevo} y su resultado es {predecir(nuevo)}")
