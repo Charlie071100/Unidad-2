@@ -18,3 +18,8 @@ for epoch in range (50):
             y_pred = 1
         else:
             y_pred = 0
+        
+        error = y[1] - y_pred
+
+        w += lr * error * x[i]
+        b += lr * error
