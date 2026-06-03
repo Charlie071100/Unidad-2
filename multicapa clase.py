@@ -26,3 +26,16 @@ for e in range(epoch):
     z1 = np.dot(x, w1) + b1
     a1 = sigmoid(z1)
 
+    z2 = np.dot (a1,w2) + b2
+    a2 = sigmoid (z2)
+    
+
+    print ("Salida predicha: ", "\n", a2)
+    print ("Salida esperada: ", "\n", y)
+
+
+    error = y - a2
+
+
+    d2 = error + sigmoid_derivative(a2)
+    
