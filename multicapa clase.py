@@ -67,3 +67,23 @@ for e in range(epoch):
     # Se usa la entrada original x y el ajuste d1 para la actualización.
     w1 += lr * np.dot(x.T, d1)
     b1 += lr * np.sum(d1, axis=0, keepdims=True)
+    
+    print ("Predicciones finales en entrenamiento:")
+    print(a2.round(3))
+    
+def predecir (x):   
+    z1 = np.dot(x,w1)+b1
+    a1 = sigmoid(z1)
+    z2 = np.dot(a1,w2) + b2
+    a2 = sigmoid (z2)
+    return a2
+nuevos = np.array([[4.6,3.1],[2.3,2.3],[4,2]])
+for punto in nuevos: 
+    resultado = predecir(punto.reshape(1,2))
+    if resultado > 0.5:
+        clase = "LEJOS"
+    else:
+        clase = "CERCA"
+    print (f"Punto {punto} - Prob: {resultado.round(3)}= {clase}")
+    
+    
